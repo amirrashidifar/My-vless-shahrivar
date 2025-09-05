@@ -1,0 +1,32 @@
+{
+  "log": { "loglevel": "warning" },
+  "inbounds": [
+    {
+      "listen": "0.0.0.0",
+      "port": __PORT__,
+      "protocol": "vless",
+      "settings": {
+        "decryption": "none",
+        "clients": [
+          { "id": "__UUID__", "flow": "" }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/__WS_PATH__",
+          "headers": {}
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    { "protocol": "freedom", "tag": "direct" },
+    { "protocol": "blackhole", "tag": "blocked" }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": []
+  }
+}
